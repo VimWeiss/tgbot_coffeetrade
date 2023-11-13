@@ -27,6 +27,10 @@ def send_item_arabica(message):
     bot.send_message(message.chat.id, 'Лот 1001. Бразилия Альта-Виста 1кг - 2400р.')
     bot.send_message(message.chat.id, 'Лот 1002. Бразилия Серрадо - 1кг - 1900р.')
 
+def send_item_robusta(message):
+    bot.send_message(message.chat.id, 'Лот 2001. Бразилия Альта-Виста 1кг - 2400р.')
+    bot.send_message(message.chat.id, 'Лот 2002. Бразилия Серрадо - 1кг - 1900р.')
+
 def coffee_func(message):
     keyboard = types.ReplyKeyboardMarkup()
     arabica_button = types.KeyboardButton(text='Арабика')
@@ -39,10 +43,15 @@ def repeat_all_messages(message):
     if message.text.lower() == 'кофе':
         coffee_func(message)
     if message.text.lower() == 'арабика':
-        bot.send_message(message.chat.id, 'Будем рады Вас обслужить! Оставьте свой номер телефона! И номер Лота!')
+        bot.send_message(message.chat.id, 'Будем рады Вас обслужить!')
         bot.send_message(message.chat.id, 'Оставьте номер телефона! И номер Лота!')
         bot.register_next_step_handler(message, send_request)
         send_item_arabica(message) 
+    if message.text.lower() == 'робуста':
+        bot.send_message(message.chat.id, 'Будем рады Вас обслужить!')
+        bot.send_message(message.chat.id, 'Оставьте номер телефона! И номер Лота!')
+        bot.register_next_step_handler(message, send_request)
+        send_item_robusta(message) 
     #bot.send_message(message.chat.id, message.text)
 
 if __name__ == "__main__":
