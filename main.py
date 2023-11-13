@@ -1,9 +1,9 @@
 from telebot import types
 import telebot
+import config
 
-token = "6414242162:AAGYA86EE06F6LQWY88ae-DiwrCHunOk8Mg"
-my_chat_id = 1018683356
-bot = telebot.TeleBot(token)
+
+bot = telebot.TeleBot(config.BOT_TOKEN)
 
 
 @bot.message_handler(commands=['start'])
@@ -20,7 +20,7 @@ def start_message(message):
 
 def send_request(message):
     mes = f'Новая заявка: {message.text}'
-    bot.send_message(my_chat_id, mes)
+    bot.send_message(config.my_chat_id, mes)
     bot.send_message(message.chat.id, 'Спасибо за ваш заказ! Наши специалисты скоро свяжутся с вами!')
 
 def send_item_arabica(message):
