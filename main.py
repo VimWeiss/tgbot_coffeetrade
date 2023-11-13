@@ -16,7 +16,7 @@ def start_message(message):
     button5 = types.KeyboardButton(text="Личный кабинет")
     button6 = types.KeyboardButton(text="Помощь")
     keyboard.add(button1, button2, button3, button4, button5, button6)
-    bot.send_message(message.chat.id, "Вас приветствует магазин AllCoffee", reply_markup=keyboard)
+    bot.send_message(message.chat.id, f"<b>Здравствуйте, {message.from_user.id}, приветствуем в магазине AllCoffee!</b>", parse_mode='html',reply_markup=keyboard)
 
 def send_request(message):
     mes = f'Новая заявка: {message.text}'
@@ -32,7 +32,7 @@ def send_item_robusta(message):
     bot.send_message(message.chat.id, 'Лот 2002. Бразилия Серрадо - 1кг - 1900р.')
 
 def coffee_func(message):
-    keyboard = types.ReplyKeyboardMarkup()
+    keyboard = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
     arabica_button = types.KeyboardButton(text='Арабика')
     robusta_button = types.KeyboardButton(text='Робуста')
     keyboard.add(arabica_button, robusta_button)
